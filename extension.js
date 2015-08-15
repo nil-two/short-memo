@@ -40,6 +40,17 @@ ShortMemo.prototype = {
         this.newMessage = new St.Entry({
             name: "newMessage",
         });
+        this.newMessage.clutter_text.connect(
+                'key-press-event',
+                Lang.bind(this, function(o, e) {
+                    if (e.get_key_symbol() == 65293) {
+                        this.menu.close();
+
+                        let newText = this.newMessage.get_text();
+                        this.message.set_text(newText);
+                        this.newMessage.set_text('');
+                    }
+                }));
         this.mainBox.add_actor(this.newMessage);
 
         this.menu.box.add(this.mainBox);
