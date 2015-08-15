@@ -1,0 +1,8 @@
+{
+  "description": "Show short message on top bar",
+  "name": "Short Memo",
+  "shell-version": [
+    "3.16.3"
+  ],
+  "uuid": "Short_Memo@kusabashira"
+}
