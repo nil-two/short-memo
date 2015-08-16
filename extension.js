@@ -42,6 +42,8 @@ ShortMemo.prototype = {
 
         this.newMessage = new St.Entry({
             name: "newMessage",
+            track_hover: true,
+            can_focus: true,
         });
         this.newMessage.clutter_text.connect(
                 'key-press-event',
