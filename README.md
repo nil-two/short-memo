@@ -3,6 +3,8 @@ Short Memo
 
 Show short message on top bar.
 
+https://extensions.gnome.org/extension/974/short-memo/
+
 License
 -------
 
