@@ -14,4 +14,4 @@ see each source file for details.
 Author
 ------
 
-wara <kusabashira227@gmail.com>
+kusabashira <kusabashira227@gmail.com>
