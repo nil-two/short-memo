@@ -60,7 +60,7 @@ ShortMemo.prototype = {
     _refresh: function() {
         let text = this._load();
         this.message.set_text(text);
-        this.newMessage.set_text("");
+        this.newMessage.set_text(text);
         this.menu.close();
     },
 
