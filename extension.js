@@ -1,13 +1,33 @@
 const St = imports.gi.St;
-const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
 const Main = imports.ui.main;
 const Lang = imports.lang;
-const Shell = imports.gi.Shell;
-const Clutter = imports.gi.Clutter;
 const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
+const ExtensionUtils = imports.misc.extensionUtils;
+
+const MESSAGE_KEY = 'message';
 
 let shortMemo;
+
+function getSettings() {
+    let extension = ExtensionUtils.getCurrentExtension();
+    let schema = extension.metadata['settings-schema'];
+
+    let schemaDir = extension.dir.get_child('schemas');
+    let schemaSource = Gio.SettingsSchemaSource.new_from_directory(
+            schemaDir.get_path(),
+            Gio.SettingsSchemaSource.get_default(),
+            false);
+
+    let schemaObj = schemaSource.lookup(schema, true);
+    if (!schemaObj) {
+        throw new Error(
+                'Schema ' + schema + ' could not be found for extension ' +
+                extension.metadata.uuid);
+    }
+    return new Gio.Settings({ settings_schema: schemaObj });
+}
 
 function ShortMemo() {
     this._init();
@@ -18,8 +38,7 @@ ShortMemo.prototype = {
 
     _init: function() {
         PanelMenu.Button.prototype._init.call(this, St.Align.START);
-        this.filePath = GLib.get_home_dir() + "/.shortmemo";
-
+        this._settings = getSettings();
         this._buildUI();
         this._refresh();
     },
@@ -67,13 +86,11 @@ ShortMemo.prototype = {
     },
 
     _save: function(text) {
-        GLib.file_set_contents(this.filePath, text);
+        this._settings.set_string(MESSAGE_KEY, text);
     },
 
     _load: function() {
-        if (!GLib.file_test(this.filePath, GLib.FileTest.EXISTS))
-            GLib.file_set_contents(this.filePath, 'empty');
-        return Shell.get_file_contents_utf8_sync(this.filePath);
+        return this._settings.get_string(MESSAGE_KEY);
     },
 };
 
