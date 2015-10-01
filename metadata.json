@@ -1,6 +1,7 @@
 {
   "description": "Show short message on top bar",
   "name": "Short Memo",
+  "settings-schema": "org.gnome.shell.extensions.short-memo",
   "shell-version": [
     "3.16.3"
   ],
