@@ -6,26 +6,8 @@ const PanelMenu = imports.ui.panelMenu;
 const PopupMenu = imports.ui.popupMenu;
 const ExtensionUtils = imports.misc.extensionUtils;
 
-const MESSAGE_KEY = 'message';
-
-function getSettings() {
-    let extension = ExtensionUtils.getCurrentExtension();
-    let schema = extension.metadata['settings-schema'];
-
-    let schemaDir = extension.dir.get_child('schemas');
-    let schemaSource = Gio.SettingsSchemaSource.new_from_directory(
-            schemaDir.get_path(),
-            Gio.SettingsSchemaSource.get_default(),
-            false);
-
-    let schemaObj = schemaSource.lookup(schema, true);
-    if (!schemaObj) {
-        throw new Error(
-                'Schema ' + schema + ' could not be found for extension ' +
-                extension.metadata.uuid);
-    }
-    return new Gio.Settings({ settings_schema: schemaObj });
-}
+const Me = imports.misc.extensionUtils.getCurrentExtension();
+const Settings = Me.imports.settings;
 
 function ShortMemo() {
     this._init();
@@ -36,7 +18,7 @@ ShortMemo.prototype = {
 
     _init: function() {
         PanelMenu.Button.prototype._init.call(this, St.Align.START);
-        this._settings = getSettings();
+        this._settings = Settings.getSettings();
         this._buildUI();
         this._refresh();
     },
@@ -84,11 +66,11 @@ ShortMemo.prototype = {
     },
 
     _save: function(text) {
-        this._settings.set_string(MESSAGE_KEY, text);
+        this._settings.set_string(Settings.MESSAGE_KEY, text);
     },
 
     _load: function() {
-        return this._settings.get_string(MESSAGE_KEY);
+        return this._settings.get_string(Settings.MESSAGE_KEY);
     },
 };
 
