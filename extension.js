@@ -8,8 +8,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 
 const MESSAGE_KEY = 'message';
 
-let shortMemo;
-
 function getSettings() {
     let extension = ExtensionUtils.getCurrentExtension();
     let schema = extension.metadata['settings-schema'];
@@ -93,6 +91,8 @@ ShortMemo.prototype = {
         return this._settings.get_string(MESSAGE_KEY);
     },
 };
+
+let shortMemo;
 
 function init() {
 }
