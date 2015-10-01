@@ -1,10 +1,7 @@
 const St = imports.gi.St;
-const Gio = imports.gi.Gio;
 const Main = imports.ui.main;
 const Lang = imports.lang;
 const PanelMenu = imports.ui.panelMenu;
-const PopupMenu = imports.ui.popupMenu;
-const ExtensionUtils = imports.misc.extensionUtils;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Settings = Me.imports.settings;
