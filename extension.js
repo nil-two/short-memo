@@ -46,8 +46,8 @@ ShortMemo.prototype = {
                 Lang.bind(this, function(o, e) {
                     if (e.get_key_symbol() == 65293) {
                         let newText = this.newMessage.get_text();
-                        this._save(newText)
-                        this._refresh()
+                        this._save(newText);
+                        this._refresh();
                     }
                 }));
         this.mainBox.add_actor(this.newMessage);
