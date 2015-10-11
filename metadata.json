@@ -3,7 +3,7 @@
   "name": "Short Memo",
   "settings-schema": "org.gnome.shell.extensions.short-memo",
   "shell-version": [
-    "3.16.3"
+    "3.18.0"
   ],
   "url": "https://github.com/kusabashira/shortmemo",
   "uuid": "Short_Memo@kusabashira"
