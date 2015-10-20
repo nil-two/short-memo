@@ -16,6 +16,11 @@ ShortMemo.prototype = {
     _init: function() {
         PanelMenu.Button.prototype._init.call(this, St.Align.START);
         this._settings = Settings.getSettings();
+        this._settings.connect(
+                'changed',
+                Lang.bind(this, function(rettings, keys) {
+                    this._refresh();
+                }));
         this._buildUI();
         this._refresh();
     },
