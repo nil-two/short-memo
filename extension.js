@@ -6,12 +6,9 @@ const PanelMenu = imports.ui.panelMenu;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Settings = Me.imports.settings;
 
-function ShortMemo() {
-    this._init();
-}
-
-ShortMemo.prototype = {
-    __proto__: PanelMenu.Button.prototype,
+const ShortMemo = new Lang.Class({
+    Name: 'ShortMemo',
+    Extends: PanelMenu.Button,
 
     _init: function() {
         PanelMenu.Button.prototype._init.call(this, St.Align.START);
@@ -25,9 +22,9 @@ ShortMemo.prototype = {
         this._refresh();
     },
 
-    destroy: function() {
+    _onDestroy: function() {
         this._settings.disconnect(this._changedSignal);
-        PanelMenu.Button.prototype.destroy.call(this);
+        this.parent();
     },
 
     _buildUI: function() {
@@ -79,7 +76,7 @@ ShortMemo.prototype = {
     _load: function() {
         return this._settings.get_string(Settings.MESSAGE_KEY);
     },
-};
+});
 
 let shortMemo;
 
