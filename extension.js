@@ -83,9 +83,9 @@ function init() {
 
 function enable() {
     let shortMemo = new ShortMemo();
-    Main.panel.addToStatusArea('shortmemo', shortMemo);
+    Main.panel.addToStatusArea('shortMemo', shortMemo);
 }
 
 function disable() {
-    Main.panel.statusArea.shortmemo.destroy();
+    Main.panel.statusArea.shortMemo.destroy();
 }
