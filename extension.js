@@ -76,6 +76,11 @@ const ShortMemo = new Lang.Class({
     _load: function() {
         return this._settings.get_string(Settings.MESSAGE_KEY);
     },
+
+    setMessage: function(text) {
+        this._save(text);
+        this._refresh();
+    }
 });
 
 function init() {
