@@ -92,5 +92,6 @@ function enable() {
 }
 
 function disable() {
-    Main.panel.statusArea.shortMemo.destroy();
+    if (Main.panel.statusArea.shortMemo != null)
+        Main.panel.statusArea.shortMemo.destroy();
 }
