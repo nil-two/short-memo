@@ -38,13 +38,13 @@ const ShortMemo = new Lang.Class({
         this.mainBox.set_vertical(true);
 
         let hint = new St.Label({
-            name: "hint",
+            name: "short-memo-hint",
             text:_("New message:"),
         });
         this.mainBox.add_actor(hint);
 
         this.newMessage = new St.Entry({
-            name: "newMessage",
+            name: "short-memo-new-message",
             track_hover: true,
             can_focus: true,
         });
