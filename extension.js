@@ -4,7 +4,9 @@ const Lang = imports.lang;
 const PanelMenu = imports.ui.panelMenu;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
-const Settings = Me.imports.settings;
+const Convenience = Me.imports.convenience;
+
+const MESSAGE_KEY = 'message';
 
 const ShortMemo = new Lang.Class({
     Name: 'ShortMemo',
@@ -12,7 +14,7 @@ const ShortMemo = new Lang.Class({
 
     _init: function() {
         PanelMenu.Button.prototype._init.call(this, St.Align.START);
-        this._settings = Settings.getSettings();
+        this._settings = Convenience.getSettings();
         this._changedSignal = this._settings.connect(
                 'changed',
                 Lang.bind(this, function(rettings, keys) {
@@ -70,11 +72,11 @@ const ShortMemo = new Lang.Class({
     },
 
     _save: function(text) {
-        this._settings.set_string(Settings.MESSAGE_KEY, text);
+        this._settings.set_string(MESSAGE_KEY, text);
     },
 
     _load: function() {
-        return this._settings.get_string(Settings.MESSAGE_KEY);
+        return this._settings.get_string(MESSAGE_KEY);
     },
 
     setMessage: function(text) {
