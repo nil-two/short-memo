@@ -5,6 +5,21 @@ Show short message on top bar.
 
 https://extensions.gnome.org/extension/974/short-memo/
 
+Installation
+------------
+
+#### from GNOME Shell Extensions
+
+See [extension](https://extensions.gnome.org/extension/974/short-memo/)
+
+#### from command line
+
+```
+git clone git://github.com/kusabashira/short-memo
+cd short-memo
+make install-extension
+```
+
 Tips
 ----
 
