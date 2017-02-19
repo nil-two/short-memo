@@ -18,7 +18,7 @@ const ShortMemo = new Lang.Class({
         this._settings = Convenience.getSettings();
         this._settingsChangedSignal = this._settings.connect(
                 'changed',
-                Lang.bind(this, function(rettings, keys) {
+                Lang.bind(this, function() {
                     this._refreshUI();
                 }));
         this._buildUI();
@@ -37,8 +37,10 @@ const ShortMemo = new Lang.Class({
         });
         this.actor.add_actor(this._message);
 
-        this._menuBox = new St.BoxLayout();
-        this._menuBox.set_vertical(true);
+        let menuBox = new St.BoxLayout({
+            vertical: true,
+        });
+        this.menu.box.add(menuBox);
 
         this._newMessage = new St.Entry({
             name: "short-memo-new-message",
@@ -47,16 +49,14 @@ const ShortMemo = new Lang.Class({
         });
         this._newMessage.clutter_text.connect(
                 'key-press-event',
-                Lang.bind(this, function(o, e) {
+                Lang.bind(this, function(_, e) {
                     if (e.get_key_symbol() == 65293) {
                         let newText = this._newMessage.get_text();
                         this._saveMessage(newText);
                         this._refreshUI();
                     }
                 }));
-        this._menuBox.add_actor(this._newMessage);
-
-        this.menu.box.add(this._menuBox);
+        menuBox.add_actor(this._newMessage);
     },
 
     _refreshUI: function() {
