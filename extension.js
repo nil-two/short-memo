@@ -39,12 +39,6 @@ const ShortMemo = new Lang.Class({
         this._menuBox = new St.BoxLayout();
         this._menuBox.set_vertical(true);
 
-        let hint = new St.Label({
-            name: "short-memo-hint",
-            text:_("New message:"),
-        });
-        this._menuBox.add_actor(hint);
-
         this._newMessage = new St.Entry({
             name: "short-memo-new-message",
             track_hover: true,
