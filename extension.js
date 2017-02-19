@@ -37,8 +37,6 @@ const ShortMemo = new Lang.Class({
         });
         this.actor.add_actor(this._message);
 
-        if (this._menuBox != null)
-            this._menuBox.destroy();
         this._menuBox = new St.BoxLayout();
         this._menuBox.set_vertical(true);
 
