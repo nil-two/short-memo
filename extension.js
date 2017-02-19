@@ -30,44 +30,44 @@ const ShortMemo = new Lang.Class({
     },
 
     _buildUI: function() {
-        this.message = new St.Label({
+        this._message = new St.Label({
         });
-        this.actor.add_actor(this.message);
+        this.actor.add_actor(this._message);
 
-        if (this.mainBox != null)
-            this.mainBox.destroy();
-        this.mainBox = new St.BoxLayout();
-        this.mainBox.set_vertical(true);
+        if (this._mainBox != null)
+            this._mainBox.destroy();
+        this._mainBox = new St.BoxLayout();
+        this._mainBox.set_vertical(true);
 
         let hint = new St.Label({
             name: "short-memo-hint",
             text:_("New message:"),
         });
-        this.mainBox.add_actor(hint);
+        this._mainBox.add_actor(hint);
 
-        this.newMessage = new St.Entry({
+        this._newMessage = new St.Entry({
             name: "short-memo-new-message",
             track_hover: true,
             can_focus: true,
         });
-        this.newMessage.clutter_text.connect(
+        this._newMessage.clutter_text.connect(
                 'key-press-event',
                 Lang.bind(this, function(o, e) {
                     if (e.get_key_symbol() == 65293) {
-                        let newText = this.newMessage.get_text();
+                        let newText = this._newMessage.get_text();
                         this._save(newText);
                         this._refresh();
                     }
                 }));
-        this.mainBox.add_actor(this.newMessage);
+        this._mainBox.add_actor(this._newMessage);
 
-        this.menu.box.add(this.mainBox);
+        this.menu.box.add(this._mainBox);
     },
 
     _refresh: function() {
         let text = this._load();
-        this.message.set_text(text);
-        this.newMessage.set_text(text);
+        this._message.set_text(text);
+        this._newMessage.set_text(text);
         this.menu.close();
     },
 
