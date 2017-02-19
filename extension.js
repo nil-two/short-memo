@@ -32,6 +32,7 @@ const ShortMemo = new Lang.Class({
 
     _buildUI: function() {
         this._message = new St.Label({
+            name: "short-memo-message",
             y_align: Clutter.ActorAlign.CENTER,
             y_expand: true,
         });
