@@ -1,6 +1,7 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Lang = imports.lang;
+const Clutter = imports.gi.Clutter;
 const PanelMenu = imports.ui.panelMenu;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
@@ -31,6 +32,8 @@ const ShortMemo = new Lang.Class({
 
     _buildUI: function() {
         this._message = new St.Label({
+            y_align: Clutter.ActorAlign.CENTER,
+            y_expand: true,
         });
         this.actor.add_actor(this._message);
 
