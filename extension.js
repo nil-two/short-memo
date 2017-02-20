@@ -1,5 +1,6 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
+const Mainloop = imports.mainloop;
 const Lang = imports.lang;
 const Clutter = imports.gi.Clutter;
 const PanelMenu = imports.ui.panelMenu;
@@ -58,6 +59,16 @@ const ShortMemo = new Lang.Class({
                     }
                 }));
         menuBox.add_actor(this._newMessage);
+
+        this.menu.connect(
+                'open-state-changed',
+                Lang.bind(this, function(sender, isOpenSignal) {
+                    if (isOpenSignal) {
+                        Mainloop.timeout_add(20, Lang.bind(this, function() {
+                            this._newMessage.grab_key_focus();
+                        }));
+                    }
+                }));
     },
 
     _refreshUI: function() {
