@@ -1,9 +1,9 @@
-const St = imports.gi.St;
-const Main = imports.ui.main;
-const Mainloop = imports.mainloop;
-const Lang = imports.lang;
-const Clutter = imports.gi.Clutter;
+const Clutter   = imports.gi.Clutter;
+const Lang      = imports.lang;
+const Main      = imports.ui.main;
+const Mainloop  = imports.mainloop;
 const PanelMenu = imports.ui.panelMenu;
+const St        = imports.gi.St;
 
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Convenience = Me.imports.convenience;
