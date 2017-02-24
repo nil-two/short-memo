@@ -15,7 +15,7 @@ const ShortMemo = new Lang.Class({
     Extends: PanelMenu.Button,
 
     _init: function() {
-        PanelMenu.Button.prototype._init.call(this, St.Align.START);
+        this.parent(St.Align.START);
         this._settings = Convenience.getSettings();
         this._settingsChangedSignal = this._settings.connect(
                 'changed',
