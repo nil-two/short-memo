@@ -92,15 +92,17 @@ const ShortMemo = new Lang.Class({
     }
 });
 
+let shortMemo;
+
 function init() {
 }
 
 function enable() {
-    let shortMemo = new ShortMemo();
+    shortMemo = new ShortMemo();
     Main.panel.addToStatusArea('shortMemo', shortMemo);
 }
 
 function disable() {
-    if (Main.panel.statusArea.shortMemo != null)
-        Main.panel.statusArea.shortMemo.destroy();
+    if (shortMemo != null)
+        shortMemo.destroy();
 }
