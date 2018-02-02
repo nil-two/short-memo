@@ -35,6 +35,19 @@ dconf write /org/gnome/shell/extensions/short-memo/message '"Warning"'
 dconf write /org/gnome/shell/extensions/short-memo/message '"(つ´∀｀)つ"'
 ```
 
+### alternate method
+You can also use a shell script to edit the message.<br/>
+Copy the add_note.sh file to any folder of your choice. e.g., $HOME/bin/
+```
+# add it to PATH
+export PATH=$PATH:$HOME/bin/
+
+# make the script executable
+chmox +x $HOME/bin/add_note.sh
+
+# run from anywhere to add notes
+add_note.sh "Enter the memo or note here"
+```
 License
 -------
 
