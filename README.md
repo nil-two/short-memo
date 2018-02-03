@@ -35,6 +35,12 @@ dconf write /org/gnome/shell/extensions/short-memo/message '"Warning"'
 dconf write /org/gnome/shell/extensions/short-memo/message '"(つ´∀｀)つ"'
 ```
 
+See also
+--------
+
+- [https://github.com/rhasnainanwar/short-memo](https://github.com/rhasnainanwar/short-memo)
+  - There is a script to change the message from CLI.
+
 License
 -------
 
