@@ -15,7 +15,7 @@ See [extension](https://extensions.gnome.org/extension/974/short-memo/)
 #### from command line
 
 ```
-git clone git://github.com/nil2nekoni/short-memo
+git clone git://github.com/nil-two/short-memo
 cd short-memo
 make install-extension
 ```
